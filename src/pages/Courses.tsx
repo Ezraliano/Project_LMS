@@ -1,74 +1,86 @@
-
+import { useState, useEffect } from 'react'; // Tambahkan import
 import { motion } from 'framer-motion';
 import { Search, Filter, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// Define the Courses component
+// Mendefinisikan Interface Course
 const Courses = () => {
-  const navigate = useNavigate(); // Hook to navigate programmatically
-  
-  // Sample data for courses
-  const courses = [
-    {
-      id: 1,
-      title: "Financial Accounting Fundamentals",
-      category: "Accounting",
-      level: "Beginner",
-      duration: "8 weeks",
-      price: "$99",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: 2,
-      title: "Advanced Auditing Techniques",
-      category: "Auditing",
-      level: "Advanced",
-      duration: "10 weeks",
-      price: "$149",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: 3,
-      title: "Corporate Finance Mastery",
-      category: "Finance",
-      level: "Intermediate",
-      duration: "12 weeks",
-      price: "$129",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: 4,
-      title: "Tax Planning Strategies",
-      category: "Accounting",
-      level: "Intermediate",
-      duration: "6 weeks",
-      price: "$79",
-      image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: 5,
-      title: "Risk Management in Banking",
-      category: "Finance",
-      level: "Advanced",
-      duration: "8 weeks",
-      price: "$119",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=600",
-    },
-    {
-      id: 6,
-      title: "Internal Controls & Compliance",
-      category: "Auditing",
-      level: "Intermediate",
-      duration: "10 weeks",
-      price: "$139",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600",
-    },
-  ];
+  const navigate = useNavigate();
+  interface Course {
+    id: number;
+    title: string;
+    category: string;
+    level: string;
+    duration: string;
+    price: string;
+    image: string;
+  }
+
+  const [courses, setCourses] = useState<Course[]>([]); // State gawe data courses
+  const [loading, setLoading] = useState(true); // State gawe loading
+  const [error, setError] = useState<string | null>(null); // State gawe error handling
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/photos?_limit=6' // Aku njopok 6 item pertama
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch courses');
+        }
+        
+        const data = await response.json();
+        
+        // Transformasi data API ke format yang dibutuhkan
+        const transformedData = data.map((item: { id: number; title: string; albumId: number; thumbnailUrl: string }) => ({
+          id: item.id,
+          title: item.title,
+          category: `Category ${item.albumId}`, // AlbumId dari API
+          level: "Beginner", // Default value
+          duration: "8 weeks", // Default value
+          price: "Rp.30.000", // Default value
+          image: item.thumbnailUrl,
+        }));
+        
+        setCourses(transformedData);
+        setLoading(false);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('Terjadi kesalahan saat memuat data');
+        }
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+        <p className="mt-4 text-stone-600">Loading courses...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12 text-red-500">
+        <p>Error loading courses: {error}</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header section with title and search/filter options */}
+        {/* Header section tetap sama */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <h1 className="text-4xl font-bold text-stone-800 mb-6 md:mb-0">Our Courses</h1>
           
@@ -93,7 +105,7 @@ const Courses = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
             <motion.div
-              key={index}
+              key={course.id} // Menggunakan ID dari API sebagai key
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -118,7 +130,7 @@ const Courses = () => {
                   <span className="mx-2">•</span>
                   <span>{course.level}</span>
                 </div>
-                <button 
+                <button
                   className="w-full btn-primary"
                   onClick={() => navigate(`/courses/${course.id}`)}
                 >

@@ -1,0 +1,152 @@
+1. Restfull API halaman courses
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(morgan('dev'));
+
+// In-memory database
+let courses = [
+  {
+    id: 1,
+    title: "Financial Accounting Fundamentals",
+    category: "Accounting",
+    level: "Beginner",
+    duration: "8 weeks",
+    price: "Rp.30.000",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
+  },
+  {
+    id: 2,
+    title: "Advanced Auditing Techniques",
+    category: "Auditing",
+    level: "Advanced",
+    duration: "10 weeks",
+    price: "Rp.50.000",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=600",
+  },
+  {
+    id: 3,
+    title: "Corporate Finance Mastery",
+    category: "Finance",
+    level: "Intermediate",
+    duration: "12 weeks",
+    price: "Rp.20.000",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
+  }
+];
+
+// GET all courses
+app.get('/api/courses', (req, res) => {
+  // Query parameters for filtering
+  const { category, level, search } = req.query;
+  
+  let filteredCourses = [...courses];
+  
+  if (category) {
+    filteredCourses = filteredCourses.filter(course => 
+      course.category.toLowerCase() === category.toLowerCase()
+    );
+  }
+  
+  if (level) {
+    filteredCourses = filteredCourses.filter(course => 
+      course.level.toLowerCase() === level.toLowerCase()
+    );
+  }
+  
+  if (search) {
+    filteredCourses = filteredCourses.filter(course => 
+      course.title.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+  
+  res.json(filteredCourses);
+});
+
+// GET single course by ID
+app.get('/api/courses/:id', (req, res) => {
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course) {
+    return res.status(404).json({ message: 'Course not found' });
+  }
+  res.json(course);
+});
+
+// POST new course
+app.post('/api/courses', (req, res) => {
+  const newCourse = {
+    id: courses.length + 1,
+    ...req.body
+  };
+  
+  // Validation
+  if (!newCourse.title || !newCourse.category || !newCourse.level) {
+    return res.status(400).json({ message: 'Title, category, and level are required' });
+  }
+  
+  courses.push(newCourse);
+  res.status(201).json(newCourse);
+});
+
+// PUT update course
+app.put('/api/courses/:id', (req, res) => {
+  const courseIndex = courses.findIndex(c => c.id === parseInt(req.params.id));
+  if (courseIndex === -1) {
+    return res.status(404).json({ message: 'Course not found' });
+  }
+  
+  courses[courseIndex] = {
+    ...courses[courseIndex],
+    ...req.body,
+    id: courses[courseIndex].id // Preserve the original ID
+  };
+  
+  res.json(courses[courseIndex]);
+});
+
+// DELETE course
+app.delete('/api/courses/:id', (req, res) => {
+  const courseIndex = courses.findIndex(c => c.id === parseInt(req.params.id));
+  if (courseIndex === -1) {
+    return res.status(404).json({ message: 'Course not found' });
+  }
+  
+  courses = courses.filter(c => c.id !== parseInt(req.params.id));
+  res.status(204).send();
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+2. package.json. untuk Restfull API courses
+{
+  "name": "courses-api",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -66,7 +66,7 @@ const Home = () => { // Mendefinisikan komponen functional Home
               <TrendingUp className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">Industry-Relevant</h3>
               <p className="text-stone-600">
-                Curriculum designed with input from leading financial institutions
+               Kurikulum dirancang dengan mengikuti perkembangan industri keuangan
               </p>
             </motion.div>
 
@@ -77,7 +77,7 @@ const Home = () => { // Mendefinisikan komponen functional Home
               <Award className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">Certified Courses</h3>
               <p className="text-stone-600">
-                Get certified and boost your professional credentials
+               Dapatkan sertifikasi dan tingkatkan kredensial profesional Anda
               </p>
             </motion.div>
 
@@ -86,9 +86,9 @@ const Home = () => { // Mendefinisikan komponen functional Home
               className="card p-6"
             >
               <Users className="h-12 w-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Expert Mentors</h3>
+              <h3 className="text-xl font-semibold mb-2">Mentor Yang ahli dan Berpengalaman</h3>
               <p className="text-stone-600">
-                Learn from experienced professionals in the field
+              Belajarlah dari para profesional yang berpengalaman di bidangnya
               </p>
             </motion.div>
           </div>
@@ -138,8 +138,8 @@ const Home = () => { // Mendefinisikan komponen functional Home
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
-            <p className="text-xl mb-8">Join thousands of successful professionals who have transformed their careers with us</p>
+            <h2 className="text-3xl font-bold mb-4">Siap Memulai Perjalanan Anda?</h2>
+            <p className="text-xl mb-8">Bergabunglah dengan ribuan profesional sukses yang telah mengubah karier mereka bersama kami</p>
             <button className="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-secondary transition-colors">
               Enroll Now
             </button>

@@ -14,7 +14,7 @@ const About = () => {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6">About EduFinance</h1>
             <p className="text-xl max-w-3xl mx-auto">
-              Empowering professionals through comprehensive education in finance, accounting, and auditing
+            Memberdayakan para profesional melalui pendidikan komprehensif di bidang keuangan, akuntansi, dan audit
             </p>
           </motion.div>
         </div>
@@ -56,10 +56,10 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold text-stone-800 mb-6">Our Mission</h2>
               <p className="text-lg text-stone-600 mb-6">
-                At EduFinance, we're committed to providing world-class education in finance, accounting, and auditing. Our goal is to empower professionals with the knowledge and skills they need to excel in their careers.
+              Di EduFinance, kami berkomitmen untuk menyediakan pendidikan kelas dunia di bidang keuangan, akuntansi, dan audit. Tujuan kami adalah memberdayakan para profesional dengan pengetahuan dan keterampilan yang mereka butuhkan untuk unggul dalam karier mereka.
               </p>
               <p className="text-lg text-stone-600">
-                We believe in practical, industry-focused learning that prepares our students for real-world challenges and opportunities in the financial sector.
+                We Kami percaya pada pembelajaran praktis dan berfokus pada industri yang mempersiapkan siswa kami menghadapi tantangan dan peluang dunia nyata di sektor keuangan.
               </p>
             </motion.div>
             <motion.div
@@ -77,10 +77,10 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Instructor  */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Our Expert Team</h2>
+          <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Para Pengajar Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {

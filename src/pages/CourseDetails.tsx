@@ -13,7 +13,7 @@ const CourseDetails = () => {
     category: "Accounting",
     level: "Beginner",
     duration: "8 weeks",
-    price: "$99",
+    price: "Rp.30.000",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
     description: "Master the fundamentals of financial accounting with our comprehensive course. Learn from industry experts and gain practical skills that you can apply immediately in your career.",
     instructor: {
