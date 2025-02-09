@@ -12,27 +12,26 @@ const Footer = () => {
               <span className="text-xl font-bold">EduFinance</span>
             </div>
             <p className="text-stone-300">
-              Empowering professionals through comprehensive learning in accounting and auditing.
+            Belajar dari pakar industri dan tingkatkan karir Anda di bidang keuangan
             </p>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-stone-300">
-              <li><a href="#" className="hover:text-secondary transition-colors">Courses</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Blog</a></li>
+              <li><a href="/courses" className="hover:text-secondary transition-colors">Courses</a></li>
+              <li><a href="/about" className="hover:text-secondary transition-colors">About Us</a></li>
+              <li><a href="/login" className="hover:text-secondary transition-colors">Login</a></li>
+              <li><a href="/register" className="hover:text-secondary transition-colors">Register</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-4">Kontak Kami</h3>
             <ul className="space-y-2 text-stone-300">
-              <li>contact@edufinance.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Learning Street</li>
-              <li>Education City, ED 12345</li>
+              <li>KAP.MTD@gmail.com</li>
+              <li>081229451575</li>
+              <li>Jl. Dorowati No.8, Kauman, Kec. Klojen, Kota Malang, Jawa Timur 65119</li>
             </ul>
           </div>
           

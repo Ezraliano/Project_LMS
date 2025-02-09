@@ -22,10 +22,10 @@ const TeacherDashboard = () => {
   ];
 
   const quickActions = [
-    { title: "Upload Content", icon: <Upload />, link: "/upload" },
-    { title: "Add Material", icon: <BookOpen />, link: "/add-material" },
-    { title: "View Students", icon: <Users />, link: "/students" },
-    { title: "Profile", icon: <User />, link: "/profile" }
+    { title: "Tambah Kursus", icon: <User />, link: "/add-courses" },
+    { title: "Video Content", icon: <Upload />, link: "/video-content" },
+    { title: "Tulis Materi", icon: <BookOpen />, link: "/add-material" },
+    { title: "View Students", icon: <Users />, link: "/view-students" }
   ];
 
   return (
@@ -49,7 +49,7 @@ const TeacherDashboard = () => {
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className="p-3 rounded-full mr-4">
                 <BookOpen className="text-primary" />
               </div>
               <div>
@@ -64,7 +64,7 @@ const TeacherDashboard = () => {
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className="p-3 rounded-full mr-4">
                 <Users className="text-primary" />
               </div>
               <div>
@@ -79,7 +79,7 @@ const TeacherDashboard = () => {
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className="p-3 rounded-full mr-4">
                 <FileText className="text-primary" />
               </div>
               <div>
@@ -132,7 +132,7 @@ const TeacherDashboard = () => {
                   <motion.button
                     key={index}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center h-32 hover:bg-primary-light transition-colors"
+                    className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center h-32 hover:bg-[#E2CEB1] transition-colors"
                     onClick={() => navigate(action.link)}
                   >
                     <div className="text-primary mb-2">{action.icon}</div>

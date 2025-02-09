@@ -11,6 +11,12 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Instructor from './pages/Instructor';
 import Payment from './pages/Payment';
+import Profile from './pages/Profile';
+import AddCourses from './pages/AddCourses';
+import VideoContent from './pages/VideoContent';
+import AddMaterial from './pages/AddMaterial';
+import ViewStudents from './pages/ViewStudents';
+
 
 function App() {
   return (
@@ -28,6 +34,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/instructor" element={<Instructor />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/add-courses" element={<AddCourses />} />
+            <Route path="/video-content" element={<VideoContent />} />
+            <Route path="/add-material" element={<AddMaterial />} />
+            <Route path="/view-students" element={<ViewStudents />} />
           </Routes>
         </main>
         <Footer />

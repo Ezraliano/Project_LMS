@@ -140,7 +140,8 @@ const Home = () => { // Mendefinisikan komponen functional Home
           >
             <h2 className="text-3xl font-bold mb-4">Siap Memulai Perjalanan Anda?</h2>
             <p className="text-xl mb-8">Bergabunglah dengan ribuan profesional sukses yang telah mengubah karier mereka bersama kami</p>
-            <button className="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-secondary transition-colors">
+            <button className="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-secondary transition-colors"
+            onClick={() => navigate('/courses')}>
               Enroll Now
             </button>
           </motion.div>

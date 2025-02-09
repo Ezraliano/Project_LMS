@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BookOpen, Clock, BarChart, FileText, Calendar, Award, User } from 'lucide-react';
+import { BookOpen, Clock, BarChart, FileText, Calendar, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -10,20 +10,18 @@ const Dashboard = () => {
       id: 1,
       title: "Advanced Financial Reporting",
       progress: 65,
-      deadline: "2024-03-15"
+      
     },
     {
       id: 2,
       title: "Audit Risk Management",
       progress: 30,
-      deadline: "2024-04-01"
+      
     }
   ];
 
   const quickActions = [
-    { title: "New Course", icon: <BookOpen />, link: "/courses" },
-    { title: "Schedule", icon: <Calendar />, link: "/schedule" },
-    { title: "Certificates", icon: <Award />, link: "/certificates" },
+    { title: "Tambah Courses", icon: <BookOpen />, link: "/courses" },
     { title: "Profile", icon: <User />, link: "/profile" }
   ];
 
@@ -48,7 +46,7 @@ const Dashboard = () => {
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className=" p-3 rounded-full mr-4">
                 <BookOpen className="text-primary" />
               </div>
               <div>
@@ -58,12 +56,12 @@ const Dashboard = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          {/* <motion.div 
             whileHover={{ scale: 1.02 }}
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className=" p-3 rounded-full mr-4">
                 <Award className="text-primary" />
               </div>
               <div>
@@ -71,14 +69,14 @@ const Dashboard = () => {
                 <p className="text-2xl font-bold">5</p>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div 
             whileHover={{ scale: 1.02 }}
             className="bg-white p-6 rounded-lg shadow-sm"
           >
             <div className="flex items-center">
-              <div className="bg-primary-light p-3 rounded-full mr-4">
+              <div className=" p-3 rounded-full mr-4">
                 <Clock className="text-primary" />
               </div>
               <div>
@@ -104,7 +102,9 @@ const Dashboard = () => {
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-semibold">{course.title}</h3>
                     <span className="text-sm text-stone-500">
-                      Due: {course.deadline}
+                    <button className="w-full text-center btn-primary mt-4">
+                    Lanjutkan
+                    </button>
                     </span>
                   </div>
                   <div className="w-full bg-stone-200 rounded-full h-2">
@@ -131,7 +131,7 @@ const Dashboard = () => {
                   <motion.button
                     key={index}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center h-32 hover:bg-primary-light transition-colors"
+                    className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center h-32 hover:bg-[#E2CEB1] transition-colors"
                     onClick={() => navigate(action.link)}
                   >
                     <div className="text-primary mb-2">{action.icon}</div>

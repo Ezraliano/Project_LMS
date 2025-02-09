@@ -1,0 +1,10 @@
+1. Menu Register
+-  User siswa dapat melakukan pembuatan akun 
+
+2. Menu Login
+-  User dapat melakukan login dengan akun yang sudah dibuat
+-  Sistem Remember me dapat aktif jadi konsepnya Ketika user mengaktifkan system remember me, system dapat membuat dan menyimpan cookie di browser.
+- Pemeriksaan Cookie.
+- Verifikasi validitas cookie di server.
+
+3. 
